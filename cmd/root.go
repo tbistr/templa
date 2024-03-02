@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+	"github.com/tbistr/templa/templa"
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -18,7 +19,13 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if len(args) != 2 {
+			cmd.Help()
+			os.Exit(1)
+		}
+		return templa.Run(args[0], args[1])
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

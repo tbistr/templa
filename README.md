@@ -1,3 +1,3 @@
-# golang-vscode-devcontainer
+# templa
 
-vscode devcontainer for golang.
+Template applying tool for text files.
